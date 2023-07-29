@@ -1,0 +1,5 @@
+storePassword=Evansfrancis1
+keyPassword=Evansfrancis1
+keyAlias=capd
+storeFile=D:/Android/flutter_projects/evanskey/capd.jks
+//Your path of key

@@ -1,0 +1,35 @@
+name: admin_panel_web
+description: Admin Panel Web
+version: 1.0.0+1
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  #Core
+  intl: ^0.18.1
+
+  #UI
+  google_fonts: ^5.0.0
+  dropdown_button2: ^2.1.4
+  bot_toast: ^4.0.4
+  flex_color_scheme: ^7.1.2
+  cached_network_image: ^3.2.3
+
+  #Local
+  dependency_plugin:
+    path: ../dependency_plugin
+  pluto_grid: ^7.0.2
+  flutter_quill: ^7.2.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

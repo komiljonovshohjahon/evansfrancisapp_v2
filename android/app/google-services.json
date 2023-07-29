@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1017296850809",
+    "firebase_url": "https://francis-c34ff.firebaseio.com",
+    "project_id": "francis-c34ff",
+    "storage_bucket": "francis-c34ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1017296850809:android:0cdf79fa7af32e2f62e9a8",
+        "android_client_info": {
+          "package_name": "com.christianappdevelopers.evansfrancisapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1017296850809-f4r4ac9b177j12dam2844qva472b297m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcqI1Hxvcu1TPqQHV32U9J9ruMSWHNku0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1017296850809-f4r4ac9b177j12dam2844qva472b297m.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1017296850809-02002o7jrb3b1gsqc7b8mvosoimhpcie.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.christianappdevelopers.evansfrancis.evansfrancsapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
