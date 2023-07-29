@@ -59,31 +59,32 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   ///Initialize Firebase
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform, name: "evansfrancisapp");
 
   final DependencyManager dependencyManager = DependencyManager();
   await initDependencies(dependencyManager);
 
-  await NotificationService().init();
-
-  ///Request notification permission
-  await FirebaseMessaging.instance.requestPermission().then((permission) {
-    Logger.d(permission.authorizationStatus.toString(),
-        tag: "FirebaseMessagingDep init");
-    switch (permission.authorizationStatus) {
-      case AuthorizationStatus.authorized:
-
-        ///If authorized, subscribe to topic
-        FirebaseMessaging.instance
-            .subscribeToTopic("send-scheduled-notifications");
-        break;
-      default:
-        break;
-    }
-  });
-
-  ///Listen to background messages
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingHandler);
+  // await NotificationService().init();
+  //
+  // ///Request notification permission
+  // await FirebaseMessaging.instance.requestPermission().then((permission) {
+  //   Logger.d(permission.authorizationStatus.toString(),
+  //       tag: "FirebaseMessagingDep init");
+  //   switch (permission.authorizationStatus) {
+  //     case AuthorizationStatus.authorized:
+  //
+  //       ///If authorized, subscribe to topic
+  //       FirebaseMessaging.instance
+  //           .subscribeToTopic("send-scheduled-notifications");
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // });
+  //
+  // ///Listen to background messages
+  // FirebaseMessaging.onBackgroundMessage(firebaseMessagingHandler);
 
   EquatableConfig.stringify = true;
 

@@ -4,8 +4,6 @@ import 'dart:io';
 import 'package:bot_toast/bot_toast.dart';
 import 'package:dependency_plugin/dependency_plugin.dart';
 import 'package:evansfrancisapp/manager/manager.dart';
-import 'package:evansfrancisapp/utils/global_functions.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -60,48 +58,23 @@ class _RunnerAppState extends State<RunnerApp> {
       builder: (context, child) => MaterialApp.router(
         routerConfig: router,
         debugShowCheckedModeBanner: kDebugMode,
-        theme: FlexThemeData.light(
-          scheme: FlexScheme.redWine,
-          surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-          blendLevel: 7,
-          subThemesData: const FlexSubThemesData(
-            blendOnLevel: 10,
-            blendOnColors: false,
-            useTextTheme: true,
-            useM2StyleDividerInM3: true,
-            appBarBackgroundSchemeColor: SchemeColor.primary,
+        title: 'Evans Francis',
+        theme: ThemeData(
+          scaffoldBackgroundColor: const Color(0xFFFAF8F1),
+          appBarTheme: const AppBarTheme(
+            elevation: 0,
+            backgroundColor: Color(0xFFFAF8F1),
+            foregroundColor: Color(0xFF3A3A3A),
           ),
-          visualDensity: FlexColorScheme.comfortablePlatformDensity,
-          useMaterial3: true,
-          swapLegacyOnMaterial3: true,
-          fontFamily: GoogleFonts.notoSans().fontFamily,
-        ).copyWith(
-            scrollbarTheme: const ScrollbarThemeData(
-          thumbVisibility: MaterialStatePropertyAll(true),
-          trackVisibility: MaterialStatePropertyAll(true),
-        )),
-        darkTheme: FlexThemeData.dark(
-          scheme: FlexScheme.redWine,
-          surfaceMode: FlexSurfaceMode.levelSurfacesLowScaffold,
-          blendLevel: 13,
-          subThemesData: const FlexSubThemesData(
-            blendOnLevel: 20,
-            useTextTheme: true,
-            useM2StyleDividerInM3: true,
+          colorScheme: const ColorScheme.light(
+            primary: Color(0xFF8C6924),
+            secondary: Color(0xFF3A3A3A),
+            tertiary: Color(0xFFB9BCBE),
           ),
-          visualDensity: FlexColorScheme.comfortablePlatformDensity,
-          useMaterial3: true,
-          swapLegacyOnMaterial3: true,
-          fontFamily: GoogleFonts.notoSans().fontFamily,
-        ).copyWith(
-            scrollbarTheme: const ScrollbarThemeData(
-          thumbVisibility: MaterialStatePropertyAll(true),
-          trackVisibility: MaterialStatePropertyAll(true),
-        )),
-
-        // Use dark or light theme based on system setting.
-        themeMode: ThemeMode.light,
-        title: 'KRCI',
+          textTheme: GoogleFonts.outfitTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         builder: (context, child) => botToastBuilder(
           context,
           MediaQuery(

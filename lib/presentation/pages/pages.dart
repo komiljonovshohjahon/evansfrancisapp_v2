@@ -1,16 +1,1 @@
-export 'login/login_view.dart';
-export 'home/home_view.dart';
-export 'uae_yt//uae_yt_view.dart';
-export 'daily_devotional/daily_devotional_view.dart';
-export 'ministry_dilkumar/ministry_dilkumar_view.dart';
-export 'scripture/scripture_view.dart';
-export 'create_user/create_user_view.dart';
-export 'login/login_view_pin.dart';
-export 'praise_report/praise_report_view.dart';
-export 'church_schedule/church_schedule_view.dart';
-export 'prayer_request/prayer_request_view.dart';
-export 'submit_praise_report/submit_praise_report_view.dart';
-export 'submit_special_request/special_request_view.dart';
-export 'contact_church_office/contact_church_office_view.dart';
-export 'basic/basics_view.dart';
-export 'social_media/social_media_view.dart';
+export 'home_view.dart';

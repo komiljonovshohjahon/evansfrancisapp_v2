@@ -1,6 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:equatable/equatable.dart';
+import 'package:evansfrancisapp/utils/global_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:evansfrancisapp/presentation/global_widgets/widgets.dart';
 import 'package:evansfrancisapp/utils/global_constants.dart';
@@ -98,22 +99,23 @@ class _DefaultDropdownState extends State<DefaultDropdown> {
           offset: const Offset(0, -12),
           maxHeight: widget.hasSearchBox ? 300 : null,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(color: Colors.grey[400]!),
-          ),
+              borderRadius: BorderRadius.circular(16.0),
+              border: Border.all(
+                  color: context.colorScheme.primary.withOpacity(.2))),
         ),
         buttonStyleData: ButtonStyleData(
           decoration: BoxDecoration(
-            color: widget.onChanged == null ? Colors.grey[200] : null,
+            // color: widget.onChanged == null ? Colors.grey[200] : null,
             borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(color: Theme.of(context).colorScheme.secondary),
+            border:
+                Border.all(color: context.colorScheme.primary.withOpacity(.2)),
           ),
           padding: const EdgeInsets.symmetric(horizontal: 16),
           height: 48,
           width: widget.width ?? 200,
         ),
         iconStyleData: IconStyleData(
-          iconEnabledColor: Theme.of(context).colorScheme.secondary,
+          iconEnabledColor: Theme.of(context).colorScheme.primary,
         ),
         hint: widget.label != null
             ? Text(
@@ -125,7 +127,7 @@ class _DefaultDropdownState extends State<DefaultDropdown> {
           selectedMenuItemBuilder: (context, child) {
             return DecoratedBox(
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
+                color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
               ),
               child: child,
             );
@@ -148,13 +150,23 @@ class _DefaultDropdownState extends State<DefaultDropdown> {
                                   text: "${widget.label}\n",
                                   style: const TextStyle(color: Colors.grey)),
                             TextSpan(
-                                text:
-                                    "${GlobalConstants.enableDebugCodes ? "[${e.id}] - " : ""}${e.title}",
-                                style: Theme.of(context).textTheme.bodyLarge),
+                                text: e.title,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary
+                                            .withOpacity(.8))),
                             if (e.subtitle != null)
                               TextSpan(
                                   text: " / ${e.subtitle}",
-                                  style: const TextStyle(color: Colors.grey)),
+                                  style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary
+                                          .withOpacity(.8))),
                           ])),
                     ),
                   ))
@@ -182,10 +194,12 @@ class _DefaultDropdownState extends State<DefaultDropdown> {
               "${GlobalConstants.enableDebugCodes ? "[${e.id}] - " : ""}${e.title}",
               softWrap: false,
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: context.colorScheme.primary),
             ),
             if (e.subtitle != null)
               Text(e.subtitle!,
-                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  style: TextStyle(
+                      fontSize: 14, color: context.colorScheme.primary),
                   softWrap: false,
                   overflow: TextOverflow.ellipsis),
           ],

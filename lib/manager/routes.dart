@@ -1,9 +1,9 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:dependency_plugin/dependency_plugin.dart';
+import 'package:evansfrancisapp/presentation/pages/pages.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:evansfrancisapp/presentation/global_widgets/widgets.dart';
-import 'package:evansfrancisapp/presentation/pages/pages.dart';
 import 'package:evansfrancisapp/utils/utils.dart';
 
 class MCANavigation extends IMCANavigation {
@@ -16,56 +16,7 @@ class MCANavigation extends IMCANavigation {
   RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
   // Routes
-  ///Root is where we check if the user is logged in or not
-  static const String root = '/root';
-
-  ///Login is where the user logs in
-  static const String login = '/login';
-
-  ///Register
-  static const String register = '/register';
-
-  ///Home page
   static const String home = '/home';
-
-  ///Ministry Dil Kumar
-  static const String ministryDilkumar = '/ministryDilkumar';
-
-  ///UAE Youtube
-  static const String uaeYt = '/uaeYt';
-
-  ///Daily Devotion
-  static const String dailyDevotion = '/dailyDevotion';
-
-  ///Scripture
-  static const String scripture = '/scripture';
-
-  ///Create user
-  static const String createUser = '/createUser';
-
-  ///Praise report
-  static const String praiseReport = '/praiseReport';
-
-  ///Church schedule
-  static const String churchSchedule = '/churchSchedule';
-
-  ///prayerRequest
-  static const String prayerRequest = '/prayerRequest';
-
-  ///submit praise report
-  static const String submitPraiseReport = '/submitPraiseReport';
-
-  ///submit special request
-  static const String submitSpecialRequest = '/submitSpecialRequest';
-
-  ///contact church office
-  static const String contactChurchOffice = '/contactChurchOffice';
-
-  ///basic
-  static const String basic = '/basic';
-
-  ///social media
-  static const String socialMedia = '/socialMedia';
 
   /// router
   @override
@@ -73,33 +24,9 @@ class MCANavigation extends IMCANavigation {
     debugLogDiagnostics: true,
     refreshListenable: loginState,
     navigatorKey: navigatorKey,
+    initialLocation: home,
     observers: [BotToastNavigatorObserver()],
     routes: [
-      GoRoute(
-        path: "/",
-        name: "root",
-        redirect: (state, context) => login,
-      ),
-      GoRoute(
-        path: login,
-        name: login.substring(1),
-        pageBuilder: (context, state) {
-          return MaterialPage<void>(
-            key: state.pageKey,
-            child: const LoginPinView(),
-          );
-        },
-      ),
-      GoRoute(
-        path: createUser,
-        name: createUser.substring(1),
-        pageBuilder: (context, state) {
-          return MaterialPage<void>(
-            key: state.pageKey,
-            child: const CreateUserView(),
-          );
-        },
-      ),
       ShellRoute(
           builder: (context, state, child) {
             return DefaultLayout(child: child);
@@ -108,204 +35,7 @@ class MCANavigation extends IMCANavigation {
             GoRoute(
               path: home,
               name: home.substring(1),
-              routes: [
-                GoRoute(
-                  path: ministryDilkumar.substring(1),
-                  name: ministryDilkumar.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: MinistryDilkumarView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: uaeYt.substring(1),
-                  name: uaeYt.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: UaeYtView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: dailyDevotion.substring(1),
-                  name: dailyDevotion.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: DailyDevotionView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: scripture.substring(1),
-                  name: scripture.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: ScriptureView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: praiseReport.substring(1),
-                  name: praiseReport.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: PraiseReportView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: churchSchedule.substring(1),
-                  name: churchSchedule.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                    }
-
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: ChurchScheduleView(
-                          collection: collection, documentId: documentId),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: prayerRequest.substring(1),
-                  name: prayerRequest.substring(1),
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: const PrayerRequestView(),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: submitPraiseReport.substring(1),
-                  name: submitPraiseReport.substring(1),
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: const SubmitPraiseReportView(),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: submitSpecialRequest.substring(1),
-                  name: submitSpecialRequest.substring(1),
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: const SubmitSpecialRequestView(),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: contactChurchOffice.substring(1),
-                  name: contactChurchOffice.substring(1),
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: const ContactChurchOfficeView(),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: basic.substring(1),
-                  name: basic.substring(1),
-                  pageBuilder: (context, state) {
-                    String? collection;
-                    String? documentId;
-                    String type = "";
-                    final notificationPayload =
-                        state.extra as Map<String, dynamic>?;
-                    if (notificationPayload != null &&
-                        notificationPayload.isNotEmpty) {
-                      collection = notificationPayload["collection"];
-                      documentId = notificationPayload["documentId"];
-                      type = notificationPayload["type"];
-                    }
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: BasicsView(
-                        type: type,
-                        collection: collection,
-                        documentId: documentId,
-                      ),
-                    );
-                  },
-                ),
-                GoRoute(
-                  path: socialMedia.substring(1),
-                  name: socialMedia.substring(1),
-                  pageBuilder: (context, state) {
-                    return MaterialPage<void>(
-                      key: state.pageKey,
-                      child: const SocialMediaView(),
-                    );
-                  },
-                ),
-              ],
+              routes: [],
               pageBuilder: (context, state) {
                 return MaterialPage<void>(
                   key: state.pageKey,
@@ -326,21 +56,6 @@ class MCANavigation extends IMCANavigation {
         ),
       )),
     ),
-    redirect: (context, state) {
-      final loginLoc = state.namedLocation(login.substring(1));
-      final homename = state.namedLocation(home.substring(1));
-      final createUserLoc = state.namedLocation(createUser.substring(1));
-
-      final loggedIn = loginState.isLoggedIn;
-
-      final loggingIn = state.location == loginLoc;
-      final isCreateUser = state.location == createUserLoc;
-
-      if (!loggedIn && isCreateUser) return createUserLoc;
-      if (!loggedIn && !loggingIn) return loginLoc;
-      if (loggedIn && loggingIn) return homename;
-      return null;
-    },
   );
 
   //Loading related functions
